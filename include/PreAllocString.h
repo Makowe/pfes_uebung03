@@ -25,23 +25,23 @@ public:
     void AddFormat(const char* format, ...);
     void AddWhiteSpace();
 
-    operator const char *() const;
-    operator const void *() const;
+    operator const char *() const { return _buffer; }
+    operator const void *() const { return _buffer; }
     const char & operator [] (const int idx);
 
     PreAllocString& operator = (char rhs);
     PreAllocString& operator = (const char * rhs);
     PreAllocString& operator = (char * const rhs);
-
     PreAllocString& operator += (char rhs);
     PreAllocString& operator += (char const * rhs);
+    PreAllocString& operator = (const PreAllocString&);
 
 private:
     bool validString() { return _buffer != nullptr && _size > 0; }
 
     char* const _buffer;
     size_t _length;
-    const size_t _size;
+    size_t _size;
 };
 
 

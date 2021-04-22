@@ -1,7 +1,3 @@
-//
-// Created by nicom on 20.04.2021.
-//
-
 #include "../include/PreAllocString.h"
 #include "../include/Printf.h"
 #include "../include/Write.h"
@@ -61,18 +57,8 @@ PreAllocString &PreAllocString::operator+=(const char *rhs) {
 }
 
 const char &PreAllocString::operator[](const int idx) {
-    //function can't return any useful value if the string isn't valid. Therefore return reference to local variable
-    if(!validString()) { return 0; }
-    if(idx > _size-1) return _buffer[_size-1];
+    if(idx > static_cast<int>(_size-1)) return _buffer[_size-1];
     return _buffer[idx];
-}
-
-PreAllocString::operator const char *() const {
-    return _buffer;
-}
-
-PreAllocString::operator const void *() const {
-    return _buffer;
 }
 
 void PreAllocString::Empty() {

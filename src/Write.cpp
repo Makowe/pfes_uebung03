@@ -1,5 +1,5 @@
-#include "../include/Write.h"
 #include <cstdio>
+#include "../include/Write.h"
 
 char* WriteChar(char* dst, const char c) {
     if(dst == nullptr) return nullptr;

@@ -1,5 +1,4 @@
 #include <cstdarg>
-
 #include "../include/Printf.h"
 #include "../include/Write.h"
 #include "../include/Formatter.h"
@@ -19,7 +18,7 @@ char* PrintfArgs(char* dst , const void* end , const char* fmt , va_list argumen
     if(dst >= end) return dst;
 
     int i = 0;
-    while(fmt[i] && dst < end) {
+    while(fmt[i] && i < MAX_ITERS && dst < end) {
         if(fmt[i] != '%') {
             dst = WriteChar(dst, fmt[i]);
             ++i;
